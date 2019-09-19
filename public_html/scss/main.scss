@@ -1,0 +1,691 @@
+html {
+	font-size: 20px !important; 
+	height: 100%; //Sticky Footer
+
+	body {
+	  	min-height: 100%; //Sticky Footer
+	  	display: flex; //Sticky Footer
+	  	flex-direction: column; //Sticky Footer
+
+		th,tr, td {
+			text-align: center;
+		}
+
+		form {
+
+			label {
+				margin-top: 0.7rem;
+				font-weight: 900;
+				font-family: $font-family-contrail;
+				text-transform: uppercase;
+			}
+
+			.form-control {
+				font-size: 0.8rem;
+			}
+
+			.btn {
+				margin-top: 1.5rem;
+				font-family: $font-family-racing;
+				text-transform: uppercase;
+				font-weight: 900;
+			}
+		}
+
+		header { 
+			border-top: 10px solid $orange;
+		 	
+			nav {
+				background-color: $black;
+				font-family: $font-family-contrail;
+
+				.btn-social {
+					font-size: 2rem;
+					margin: 0px 0px 0px 15px;
+					
+					a {
+
+						&:hover {
+							color: $orange !important;
+						}
+					}
+				}
+				
+				.open {
+					background-color: $orange;
+				}
+
+				ul.navbar-nav {
+					float: right;
+				}
+
+				.navbar-logo {
+					position: absolute;
+					top: 20px;
+					z-index: 1;  
+				}
+		   
+				.border-to-image {
+					height: 25px;
+				    width: 10px;
+				    background-color: #EB6211;
+				    position: absolute;
+				    left: 84px;
+					z-index: 1; 
+				}
+				    
+				.active {
+					background-color: $orange;
+				} 
+		   
+				.nav-link {
+					color: $white;
+					height: 60px;
+					padding: 15px 20px 15px 20px;
+					padding-top: 18px !important;
+					font-size: 1.05rem;
+
+					&:hover {
+						background-color: $orange;
+					}  
+				}
+
+				.dropdown-menu {
+					font-size: 1.1rem;
+				}
+			}
+		}
+		 
+		section {
+			flex: 1 0 auto; //Sticky Footer
+			
+			iframe {
+				max-width: 100% !important;
+			}
+
+			#front_end_homepage_default {
+
+				.header {
+					height: 800px;
+					color: $white; 
+					text-align: center;
+					transition: opacity .15s linear;
+						 
+					.header-title-wrapper {
+						margin-top: 200px;
+					
+						.header-title-wrapper-1, 
+						.header-title-wrapper-2, 
+						.header-title-wrapper-3, {
+							font-family: $font-family-racing;
+
+							h1 {
+								font-size: 5rem;
+								text-shadow: rgba(0, 0, 0, 0.9) 0px 5px 5px;
+
+								span {
+									color: $orange;
+								}
+							}
+						}
+					}
+
+					.header-title-description {
+						font-family: $font-family-contrail;
+
+						h1 {
+							margin-top: 130px;
+							text-shadow: rgba(0, 0, 0, 0.9) 0px 5px 5px;
+						}
+					}
+				}
+				
+				.information {
+					font-family: $font-family-contrail;
+					background-color: $black;
+					color: $white;
+					text-align: center;
+					padding: 1rem;
+					text-transform: uppercase;
+					font-size: 1.1rem;
+
+					p:last-child {
+						margin: 0;
+					}
+				}
+
+				.presentation {
+					margin: 45px 0px 45px 0px;
+
+					.presentation-wrapper {
+    					display: flex;
+						align-items: center;
+
+						.presentation-wrapper-text {
+							text-align: center;
+
+							h1 {
+								font-family: $font-family-contrail;
+								margin-top: 0;
+								margin-bottom: 2rem;
+								position: relative;
+							
+								&:after {
+									content: '';
+									display: block;
+									max-width: 431px;
+									width: 100%;
+									margin: 4px auto;
+								    height: 5px;
+								    background-color: $orange;
+								}
+							}
+
+							p:last-child {
+								margin: 0 !important;
+							}
+						}
+
+						.presentation-wrapper-image {
+
+							img {
+								margin: auto;
+							}
+						}
+					}
+				}
+				
+				.sponsors {
+					height: 415px;
+					padding: 45px 0px 45px 0px;
+
+					.sponsors-wrapper {
+						height: 300px;
+						margin: 15px;
+						padding: 30px;
+						border: 10px solid $white;
+						text-align: center;
+						color: $white;
+
+						h1 {
+							margin-top: 36px;
+							font-family: $font-family-contrail;
+							text-transform: uppercase;
+						}
+
+						&:hover {
+							background-color: rgba(234,91,12,0.7);
+							transition: all 0.5s ease;
+
+							p {
+								color: black;
+								transition: all 0.5s ease;
+							}
+						}
+					}
+				}
+
+				.map {
+
+					iframe {
+					    display: block !important;
+					    width: 100% !important;					
+					}
+				}
+			}
+
+			#front_end_actuality_default {
+
+				.actuality {
+
+					.actuality-left {
+						margin-top: 15px;
+
+						h1 {
+							font-family: $font-family-racing;
+							text-align: center;
+							margin-left: 170px;
+							min-height: 170px;
+						}
+
+						.actuality-left-date {
+							font-weight: 900;
+						    color: $orange;
+						    border-bottom: 1px solid $black;
+						    text-align: right;
+						}
+
+						.actuality-left-content {
+							margin-top: 15px;
+						}
+					}
+
+					.actuality-right {
+						padding-top: 23px;
+						padding-bottom: 5px;
+						background-color: $orange;
+						border-right: 5px solid $black;
+						border-left: 5px solid $black;
+
+						form {
+							margin-bottom: 15px;
+
+							#search_submit {
+								margin: 0 !important;
+							}
+						}
+
+						.actuality-right-loading {
+							text-align: center;
+							margin-bottom: 15px;
+						}
+
+						.actuality-right-result-search-danger,
+						.actuality-right-result-search-success {
+							padding: 5px;
+							text-align: center;
+							margin-bottom: 15px; 
+						}
+						
+						.actuality-right-result-search-danger {
+							background-color: #f2dede;
+						}
+
+						.actuality-right-result-search-success {
+							background-color: #dff0d8;
+						}				
+						
+						.actuality-right-result-search {
+							border-bottom: 1px solid $black;
+							margin-bottom: 15px;
+
+							h2 {
+								font-size: 16px;
+								margin-top: 5px;
+								text-transform: uppercase;
+								font-weight: 900;
+							}
+
+							span {
+								
+							}
+						}
+
+						a {
+							color: $white;
+							
+							article {
+
+								h2 {
+									font-family: $font-family-contrail;
+									font-size: 1.3rem;
+				    				text-transform: uppercase;
+								}
+
+								.actuality-right-date {
+									color: $black;
+									text-align: right;
+								}
+							}
+						}	
+					}
+				}
+			}
+
+			#front_end_team_young_default,
+			#front_end_team_first_default {
+
+				.team {
+
+					.card {
+						border-radius: 0;
+
+						.team-title {
+							font-family: $font-family-contrail;
+							background-color: $orange;
+							color: $white;
+							text-align: center;
+							text-transform: uppercase;
+
+							.card-title {
+								margin: 0;
+							}
+						}
+
+						p {
+							margin: 0;
+						}
+					}
+				}
+			}
+
+			#front_end_team_young_default {
+
+				h1 {
+ 
+					&:after {
+						max-width: 412px;
+					}
+				}
+			}
+
+			#front_end_team_first_default {
+				
+				h1 {
+ 
+					&:after {
+						max-width: 464px;
+					}
+				}
+			} 
+
+			#front_end_team_young_description {
+ 
+				h1 {
+ 
+					&:after {
+						max-width: 330px;
+					}
+				}
+
+				table {
+					font-family: $font-family-contrail;
+					
+					thead {
+						text-transform: uppercase;
+						background-color: $orange;
+						color: $white;
+					}
+				}
+				
+				hr {
+					background-color: $orange;
+					height: 5px;
+				}
+
+				.player,
+				.staff {
+
+					.card {
+						border-radius: 0;
+						text-align: center;
+						font-family: $font-family-contrail;
+
+						.player-title,
+						.staff-title {
+							text-transform: uppercase;
+
+							.card-title {
+								color: $orange;
+							}
+
+							.card-subtitle {
+								color: $black;
+							}
+						}
+
+						.staff-function {
+							background-color: $black;
+							color: $white;
+
+							h4 {
+								margin: 0;
+							}
+						}
+
+						p {
+							margin: 0;
+						}
+					}
+				}
+
+			}
+
+			#front_end_team_first_description {
+
+				h1 {
+
+					&:after {
+						max-width: 438px;
+					}
+				}
+				
+				hr {
+					background-color: $orange;
+					height: 5px;
+				}
+
+				.player,
+				.staff {
+
+					.card {
+						border-radius: 0;
+						text-align: center;
+						font-family: $font-family-contrail;
+
+						.player-title,
+						.staff-title {
+							text-transform: uppercase;
+
+							.card-title {
+								color: $orange;
+							}
+
+							.card-subtitle {
+								color: $black;
+							}
+						}
+
+						.staff-function {
+							background-color: $black;
+							color: $white;
+
+							h4 {
+								margin: 0;
+							}
+						}
+
+						p {
+							margin: 0;
+						}
+					}
+				}
+			}
+
+			#front_end_registration_default {
+
+				h1 {
+
+					&:after {
+						max-width: 312px;
+					}
+				}
+			}
+
+			#front_end_tournament_default {
+
+				h1 {
+
+					&:after {
+						max-width: 247px;
+					}
+				}
+				
+				.date {
+					font-weight: 900;
+				    text-align: center;
+				    font-size: 1.5rem;
+				    font-family: $font-family-racing;
+				}
+
+				table {
+					font-family: $font-family-contrail;
+					
+					thead {
+						text-transform: uppercase;
+						background-color: $orange;
+						color: $white;
+					}
+				}
+			}
+
+			#front_end_committee_default {
+
+				h1 {
+
+					&:after {
+						max-width: 392px;
+					}
+				}
+
+				.committee {
+
+					.card {
+						border-radius: 0;
+						font-family: $font-family-contrail;
+						text-align: center;
+
+						.committee-function {
+							font-weight: 900;
+							background-color: $orange;
+							color: $white;
+
+							.card-title {
+								margin: 0;
+							}
+						}
+
+						.committee-name {
+							text-transform: uppercase;
+
+							.card-title {
+								color: $orange;
+							}
+
+							.card-subtitle {
+								color: $black;
+							}
+
+							p {
+								margin-top:0.4rem;
+							}
+						}
+
+						p {
+							margin: 0;
+						}
+					}
+				}
+			}
+
+			#front_end_team_young_default,
+			#front_end_team_young_description,
+			#front_end_team_first_default,
+			#front_end_team_first_description,
+			#front_end_registration_default,
+			#front_end_tournament_default,
+			#front_end_committee_default {
+				margin-bottom: 1rem;
+				
+				h1 {
+					text-align: center;
+					font-family: $font-family-racing;
+				    height: 130px;
+				    margin-top: 2rem;
+				    position: relative;
+
+					&:after {
+						content: '';
+						display: block;
+						width: 100%;
+						margin: 4px auto;
+					    height: 5px;
+					    background-color: $orange;
+					}
+				}
+			}
+		}  
+		    
+		footer {
+			background-color: $black;
+			color: $white;
+			border-bottom: 10px solid $orange;
+			text-align: center;
+		 	padding: 0.75rem 0 0.75rem 0;
+			
+			.footer-wrapper {
+		    	display: flex;
+				align-items: center;
+
+				i {
+					color: $orange;
+				}
+
+				p {
+					font-weight: 900;
+					color: $white;
+					margin: 0;
+				} 
+
+				.fa {
+					font-size: 38px;
+				} 
+			}
+
+		}
+	}
+}
+
+// Fix display table in Firefox
+@-moz-document url-prefix() {
+	fieldset { display: table-cell; }
+}
+
+// Fix AddThis display
+#atstbx {
+	text-align: center !important;
+    padding: 15px 5px 5px 5px !important;
+
+    .at-share-btn {
+    	max-width: 3pc !important;
+    	max-height: 3pc !important;
+    }
+ 
+    .at4-icon {
+	    width: 3pc !important;
+	    height: 3pc !important;
+	    line-height: 3pc !important;
+	    background-size: 3pc !important;
+    }
+}
+
+// Fix display form checkbox
+#front_end_tournament_default {
+	
+	.displayCondition {
+		font-size: 0.7rem;
+
+		a {
+			color: $orange;
+		}
+	
+		.card {
+			border-radius: 0;
+		}
+	}
+
+	#appbundle_tournament_registration_add_tournamentRegistrationTeams {
+		display: flex;
+		flex-wrap: wrap;
+	  	align-items: center;
+		
+		label {
+			margin: 0;
+		}
+
+		div {
+		   flex: 1 0 12.5%;
+		   box-sizing: border-box;
+		}
+	}
+}

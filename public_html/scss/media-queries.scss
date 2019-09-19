@@ -1,0 +1,268 @@
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width
+
+// Large devices (desktops, less than 75em)
+@media (max-width: 74.9em) {
+
+	html {
+		font-size: 19px !important;
+
+		header { 
+		 	
+			nav {
+				
+				.btn-social {
+					margin: 3px 0px 0px 15px !important;
+				}
+				.dropdown-menu {
+					min-width: 121px !important;
+				}
+			}
+		}
+
+		section {
+			
+			#front_end_homepage_default {
+
+				.header {
+
+					.header-title-wrapper {
+						margin-top: 250px !important;
+
+						.header-title-wrapper-1 {
+							margin-top: 30px !important;
+						}
+					}
+				}
+
+				.sponsors {
+
+					.sponsors-wrapper {
+						height: 310px !important;
+					    padding: 0.9rem !important;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						h1 {
+							margin-top: 0 !important;
+						}
+
+						p {
+							margin: 0 !important;
+						}
+					}
+				}
+			}
+
+			#front_end_actuality_default {
+				
+				.actuality {
+
+					.actuality-left {
+
+						h1 { 
+							margin-left: 170px !important;;
+							min-height: 170px !important;;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Medium devices (tablets, less than 62em)
+@media (max-width: 61.9em) {
+
+	html {
+		font-size: 18px !important;
+
+		header {
+
+			nav {
+
+				.btn-social {
+					margin: 11px 0px 0px 15px !important;
+				}
+
+				ul.navbar-nav {
+					
+					float: none !important;
+
+					.nav-link {
+						padding: 15px 6px 15px 6px !important;
+					}
+
+					.nav-item {
+						width: 100% !important;
+
+						.dropdown-menu {
+							text-align: left !important;
+							min-width: 100% !important;
+							background-color: $orange !important;
+							margin: 0 !important;
+
+							.dropdown-item {
+								padding: 15px 6px 15px 20px !important;
+							}
+						}
+					}
+				}
+
+				.active {
+					background-color: $black !important;
+					color: $orange !important;
+				} 
+			}
+		}
+
+		section {
+			
+			#front_end_homepage_default {
+
+				.header {
+
+					.header-title-wrapper {
+						margin-top: 60px !important;
+					}
+				}
+
+				.sponsors {
+					height: 850px !important;
+
+					.sponsors-wrapper {
+						height: 223px !important;
+					}
+				}
+			}
+
+			#front_end_actuality_default {
+				
+				.actuality {
+
+					.actuality-left {
+
+						h1 { 
+							margin-left: 0px !important;
+							min-height: 0px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Small devices (landscape phones, less than 48em)
+@media (max-width: 47.9em) {
+
+	html {
+		font-size: 17px !important;
+
+		section { 
+
+			#front_end_homepage_default { 
+
+				.header {
+
+					.header-title-wrapper {
+						margin-top: 60px !important;
+
+						.header-title-wrapper-1 {
+							margin-top: 40px !important;
+						}
+					}
+				}
+
+				.presentation {
+					
+					.presentation-wrapper-text {
+
+						h1 {
+							margin: 2rem 0 2rem 0 !important;
+						}
+					}
+				}
+			}
+			
+			#front_end_actuality_default {
+				
+				.actuality {
+
+					.actuality-right {
+						border-right: none !important;
+						border-left: none !important;
+					}
+				}
+			}
+ 
+			#front_end_tournament_default {
+
+				#appbundle_tournament_registration_add_tournamentRegistrationTeams {
+
+					div {
+					   flex: 1 0 25% !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Extra small devices (portrait phones, less than 34em)
+@media (max-width: 33.9em) { 
+
+	html {
+		font-size: 16px !important;
+
+		body {
+
+			section {
+
+				#front_end_homepage_default {
+
+					.header {
+
+						.header-title-wrapper {
+							margin-top: 120px !important; 
+					
+							.header-title-wrapper-1, 
+							.header-title-wrapper-2, 
+							.header-title-wrapper-3, {
+
+								h1 {
+									font-size: 3rem !important;
+								}
+							}
+
+							.header-title-wrapper-1 {
+								margin-top: 70px !important;
+							}
+						}
+
+						.header-title-description {
+
+							h1 {
+								font-size: 1.9rem !important;
+							}
+						}
+					}
+
+					.presentation {
+
+						.presentation-wrapper-text {
+
+							h1 {
+							
+								&:after {
+									max-width: 234px !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

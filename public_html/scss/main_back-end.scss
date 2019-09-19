@@ -1,0 +1,132 @@
+// Google Fonts
+@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700");
+
+$font-family-lato: 'Lato', sans-serif;
+$font-size-base: 0.9rem; 
+
+$white: #ffffff;
+$black: #000000;
+
+body {
+    font-family: $font-family-lato;
+    background-image: url('/img/background_admin.png'); 
+    background-size: auto;
+    background-color: #807F7F;
+    font-size: $font-size-base;
+	
+	a:link, 
+	a:visited, 
+	a:active {
+		text-decoration: none;
+	}
+
+	.btn {
+		font-size: $font-size-base;
+	}
+
+	.btn-sm {
+		padding: 0.15rem 0.50rem;
+	}
+
+	.form-control {
+		font-size: $font-size-base;
+		margin: 0rem 0rem 0.375rem 0rem;
+	}
+
+	.control-label {
+		font-weight: bold;
+	}
+
+	.alert {
+		padding: 10px;
+	}
+
+    header {
+
+		.navbar {
+			border-radius: 0;
+			background-color: #333333;
+			margin-bottom: 15px;
+			border-bottom: 1px solid #e7e7e7;
+
+			a:link, 
+			a:visited, 
+			a:active {
+				text-decoration: none;
+				color: #999999;
+
+				&:hover {
+					color: $white;
+				}
+			}
+
+			.navbar-btn {
+				margin: 2px 15px 0px 0px;
+				padding: 4px 7px 4px 7px;
+			}
+
+			.dropdown-menu {
+				border-radius: 0;
+				background-color: #333333;
+				color: $white;
+				font-size: $font-size-base;
+
+				.dropdown-item {
+					color: #999999;
+
+					&:hover {
+						color: $white;
+						background-color: #333333;
+					}
+				}
+			}
+
+			.modal-margin {
+				margin-top: 4px;
+			}
+		}
+    }
+
+    section {
+		
+		th, 
+		tr, 
+		td {
+			text-align: center;
+		}
+
+		.breadcrumb {
+			padding: 7px 0px 7px 15px;
+		} 
+
+		.order-by-column {
+			cursor: pointer;
+		}
+
+    	.card {
+
+    		img {
+    			margin:auto;
+    		}
+ 
+    		.card-header {
+				text-align: center;
+				font-weight: bold;
+				padding: 7px 0px 7px 15px;
+    		}
+
+    		.card-block {
+    			background-color: $white;
+
+				.card-columns {
+				    -webkit-column-count: 8;
+				}
+
+				.select-picture,
+				.delete-picture {
+					width: 100%;
+				}
+    		}
+    	}
+    }
+}
