@@ -1,0 +1,457 @@
+#################################################################################
+# FrontEnd #
+#################################################################################
+
+# Homepage #
+
+front_end_homepage_default:
+    pattern:  /
+    defaults: { _controller: AppBundle:Homepage:frontEndHomepageDefault }
+
+# Activity #
+
+front_end_actuality_search:
+    pattern:  /actualités/rechercher/keyword
+    defaults: { _controller: AppBundle:Actuality:frontEndActualitySearch }
+    requirements:
+        _method: POST
+
+front_end_actuality_default:
+    pattern:  /actualités/{slug}
+    defaults: { _controller: AppBundle:Actuality:frontEndActualityDefault }
+
+# Team #
+
+front_end_team_young_default:
+    pattern:  /équipes/jeunes
+    defaults: { _controller: AppBundle:Team:frontEndTeamYoungDefault }
+
+front_end_team_young_description:
+    pattern:  /équipes/jeunes/{slug}
+    defaults: { _controller: AppBundle:Team:frontEndTeamYoungDescription }
+
+front_end_team_first_default:
+    pattern:  /équipes/première
+    defaults: { _controller: AppBundle:Team:frontEndTeamFirstDefault }
+
+front_end_team_first_description:
+    pattern:  /équipes/première/{slug}
+    defaults: { _controller: AppBundle:Team:frontEndTeamFirstDescription }
+
+# Registration #
+
+front_end_registration_default:
+    pattern:  /inscription
+    defaults: { _controller: AppBundle:Registration:frontEndRegistrationDefault }
+
+# Tournament #
+
+front_end_tournament_default:
+    pattern:  /tournois
+    defaults: { _controller: AppBundle:Tournament:frontEndTournamentDefault }
+
+# Committee #
+
+front_end_committee_default:
+    pattern:  /comité-du-club
+    defaults: { _controller: AppBundle:Committee:frontEndCommitteeDefault }
+
+#################################################################################
+# Root BackEnd #
+#################################################################################
+
+back_end_default:
+    pattern:  /admin
+    defaults: { _controller: AppBundle:SEO:backEndSEODefault }
+
+#################################################################################
+# BackEnd #
+#################################################################################
+
+# SEO
+
+back_end_seo_default:
+    pattern:  /admin/référencement
+    defaults: { _controller: AppBundle:SEO:backEndSEODefault }
+
+back_end_seo_edit:
+    pattern:  /admin/référencement/edit/{seoId}
+    defaults: { _controller: AppBundle:SEO:backEndSEOEdit }
+    requirements:
+        seoId: \d+
+
+# Text
+
+back_end_text_default:
+    pattern:  /admin/textes
+    defaults: { _controller: AppBundle:Text:backEndTextDefault }
+
+back_end_text_edit:
+    pattern:  /admin/textes/edit/{textId}
+    defaults: { _controller: AppBundle:Text:backEndTextEdit }
+    requirements:
+        textId: \d+
+
+# Actuality
+
+back_end_actuality_default:
+    pattern:  /admin/actualités
+    defaults: { _controller: AppBundle:Actuality:backEndActualityDefault }
+
+back_end_actuality_add:
+    pattern:  /admin/actualités/add
+    defaults: { _controller: AppBundle:Actuality:backEndActualityAdd }
+
+back_end_actuality_edit:
+    pattern:  /admin/actualités/edit/{actualityId}
+    defaults: { _controller: AppBundle:Actuality:backEndActualityEdit }
+    requirements:
+        actualityId: \d+
+
+back_end_actuality_delete:
+    pattern:  /admin/actualités/delete/{actualityId}
+    defaults: { _controller: AppBundle:Actuality:backEndActualityDelete }
+    requirements:
+        actualityId: \d+
+
+back_end_actuality_picture:
+    pattern:  /admin/actualités/picture/{actualityId}
+    defaults: { _controller: AppBundle:Actuality:backEndActualityPicture }
+    requirements:
+        actualityId: \d+
+
+back_end_actuality_picture_select:
+    pattern:  /admin/actualités/picture/select
+    defaults: { _controller: AppBundle:Actuality:backEndActualityPictureSelect }
+
+back_end_actuality_picture_delete:
+    pattern:  /admin/actualités/picture/delete
+    defaults: { _controller: AppBundle:Actuality:backEndActualityPictureDelete }
+
+# Team
+
+back_end_team_default:
+    pattern:  /admin/équipes
+    defaults: { _controller: AppBundle:Team:backEndTeamDefault }
+
+back_end_team_add:
+    pattern:  /admin/équipes/add
+    defaults: { _controller: AppBundle:Team:backEndTeamAdd }
+
+back_end_team_edit:
+    pattern:  /admin/équipes/edit/{teamId}
+    defaults: { _controller: AppBundle:Team:backEndTeamEdit }
+    requirements:
+        teamId: \d+
+
+back_end_team_delete:
+    pattern:  /admin/équipes/delete/{teamId}
+    defaults: { _controller: AppBundle:Team:backEndTeamDelete }
+    requirements:
+        teamId: \d+
+
+back_end_team_picture:
+    pattern:  /admin/équipes/picture/{teamId}
+    defaults: { _controller: AppBundle:Team:backEndTeamPicture }
+    requirements:
+        teamId: \d+
+
+back_end_team_picture_select:
+    pattern:  /admin/équipes/picture/select
+    defaults: { _controller: AppBundle:Team:backEndTeamPictureSelect }
+
+back_end_team_picture_delete:
+    pattern:  /admin/équipes/picture/delete
+    defaults: { _controller: AppBundle:Team:backEndTeamPictureDelete }
+
+back_end_team_staff:
+    pattern:  /admin/équipes/staff/{teamId}
+    defaults: { _controller: AppBundle:Team:backEndTeamStaff }
+    requirements:
+        teamId: \d+
+
+back_end_team_staff_add:
+    pattern:  /admin/équipes/staff/add/{teamId}
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffAdd }
+    requirements:
+        teamId: \d+
+
+back_end_team_staff_edit:
+    pattern:  /admin/équipes/staff/edit/{teamId}/{teamStaffId}
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffEdit }
+    requirements:
+        teamId: \d+ 
+        teamStaffId: \d+ 
+
+back_end_team_staff_delete:
+    pattern:  /admin/équipes/staff/delete/{teamId}/{teamStaffId}
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffDelete }
+    requirements:
+        teamId: \d+
+        teamStaffId: \d+
+
+back_end_team_staff_picture:
+    pattern:  /admin/équipes/staff/picture/{teamId}/{teamStaffId}
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffPicture }
+    requirements:
+        teamId: \d+
+        teamStaffId: \d+
+
+back_end_team_staff_picture_select:
+    pattern:  /admin/équipes/staff/picture/select
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffPictureSelect }
+
+back_end_team_staff_picture_delete:
+    pattern:  /admin/équipes/staff/picture/delete
+    defaults: { _controller: AppBundle:Team:backEndTeamStaffPictureDelete }
+
+# Player
+
+back_end_player_default:
+    pattern:  /admin/joueurs
+    defaults: { _controller: AppBundle:Player:backEndPlayerDefault }
+
+back_end_player_add:
+    pattern:  /admin/joueurs/add
+    defaults: { _controller: AppBundle:Player:backEndPlayerAdd }
+
+back_end_player_edit:
+    pattern:  /admin/joueurs/edit/{playerId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerEdit }
+    requirements:
+        playerId: \d+
+
+back_end_player_delete:
+    pattern:  /admin/joueurs/delete/{playerId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerDelete }
+    requirements:
+        playerId: \d+
+
+back_end_player_picture:
+    pattern:  /admin/joueurs/picture/{playerId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerPicture }
+    requirements:
+        playerId: \d+
+
+back_end_player_picture_select:
+    pattern:  /admin/joueurs/picture/select
+    defaults: { _controller: AppBundle:Player:backEndPlayerPictureSelect }
+
+back_end_player_picture_delete:
+    pattern:  /admin/joueurs/picture/delete
+    defaults: { _controller: AppBundle:Player:backEndPlayerPictureDelete }
+
+back_end_player_payment:
+    pattern:  /admin/joueurs/payment/{playerId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerPayment }
+    requirements:
+        playerId: \d+
+
+back_end_player_payment_add:
+    pattern:  /admin/joueurs/payment/add/{playerId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerPaymentAdd }
+    requirements:
+        playerId: \d+
+
+back_end_player_payment_edit:
+    pattern:  /admin/joueurs/payment/edit/{playerId}/{paymentId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerPaymentEdit }
+    requirements:
+        playerId: \d+ 
+        paymentId: \d+ 
+
+back_end_player_payment_delete:
+    pattern:  /admin/joueurs/payment/delete/{playerId}/{paymentId}
+    defaults: { _controller: AppBundle:Player:backEndPlayerPaymentDelete }
+    requirements:
+        playerId: \d+
+        paymentId: \d+
+
+# Registration
+
+back_end_registration_default:
+    pattern:  /admin/inscriptions
+    defaults: { _controller: AppBundle:Registration:backEndRegistrationDefault }
+
+back_end_registration_edit:
+    pattern:  /admin/inscriptions/edit/{registrationId}
+    defaults: { _controller: AppBundle:Registration:backEndRegistrationEdit }
+    requirements:
+        registrationId: \d+
+
+# Committee
+
+back_end_committee_default:
+    pattern:  /admin/comité-du-club
+    defaults: { _controller: AppBundle:Committee:backEndCommitteeDefault }
+
+back_end_committee_add:
+    pattern:  /admin/comité-du-club/add
+    defaults: { _controller: AppBundle:Committee:backEndCommitteeAdd }
+
+back_end_committee_edit:
+    pattern:  /admin/comité-du-club/edit/{committeeId}
+    defaults: { _controller: AppBundle:Committee:backEndCommitteeEdit }
+    requirements:
+        committeeId: \d+
+
+back_end_committee_delete:
+    pattern:  /admin/comité-du-club/delete/{committeeId}
+    defaults: { _controller: AppBundle:Committee:backEndCommitteeDelete }
+    requirements:
+        committeeId: \d+
+
+back_end_committee_picture:
+    pattern:  /admin/comité-du-club/picture/{committeeId}
+    defaults: { _controller: AppBundle:Committee:backEndCommitteePicture }
+    requirements:
+        committeeId: \d+
+
+back_end_committee_picture_select:
+    pattern:  /admin/comité-du-club/picture/select
+    defaults: { _controller: AppBundle:Committee:backEndCommitteePictureSelect }
+
+back_end_committee_picture_delete:
+    pattern:  /admin/comité-du-club/picture/delete
+    defaults: { _controller: AppBundle:Committee:backEndCommitteePictureDelete }
+
+# Tournament
+
+back_end_tournament_default:
+    pattern:  /admin/tournois
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentDefault }
+
+back_end_tournament_add:
+    pattern:  /admin/tournois/add
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentAdd }
+
+back_end_tournament_edit:
+    pattern:  /admin/tournois/edit/{tournamentId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentEdit }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_delete:
+    pattern:  /admin/tournois/delete/{tournamentId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentDelete }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_pool:
+    pattern:  /admin/tournois/pool/{tournamentId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentPool }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_pool_add:
+    pattern:  /admin/tournois/pool/add/{tournamentId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentPoolAdd }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_pool_edit:
+    pattern:  /admin/tournois/pool/edit/{tournamentId}/{tournamentPoolId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentPoolEdit }
+    requirements:
+        tournamentId: \d+ 
+        tournamentPool: \d+ 
+
+back_end_tournament_pool_delete:
+    pattern:  /admin/tournois/pool/delete/{tournamentId}/{tournamentPoolId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentPoolDelete }
+    requirements:
+        tournamentId: \d+
+        tournamentPool: \d+
+
+back_end_tournament_registration:
+    pattern:  /admin/tournois/inscriptions
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentRegistration }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_registration_add:
+    pattern:  /admin/tournois/inscriptions/add
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentRegistrationAdd }
+    requirements:
+        tournamentId: \d+
+
+back_end_tournament_registration_edit:
+    pattern:  /admin/tournois/inscriptions/edit/{tournamentRegistrationId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentRegistrationEdit }
+    requirements:
+        tournamentId: \d+ 
+        tournamentRegistration: \d+ 
+
+back_end_tournament_registration_delete:
+    pattern:  /admin/tournois/inscriptions/delete/{tournamentRegistrationId}
+    defaults: { _controller: AppBundle:Tournament:backEndTournamentRegistrationDelete }
+    requirements:
+        tournamentId: \d+
+        tournamentRegistration: \d+
+# User
+
+back_end_user_default:
+    pattern:  /admin/utilisateurs
+    defaults: { _controller: AppBundle:User:backEndUserDefault }
+
+back_end_user_add:
+    pattern:  /admin/utilisateurs/add
+    defaults: { _controller: AppBundle:User:backEndUserAdd }
+
+back_end_user_edit:
+    pattern:  /admin/utilisateurs/edit/{userId}
+    defaults: { _controller: AppBundle:User:backEndUserEdit }
+    requirements:
+        userId: \d+
+
+back_end_user_delete:
+    pattern:  /admin/utilisateurs/delete/{userId}
+    defaults: { _controller: AppBundle:User:backEndUserDelete }
+    requirements:
+        userId: \d+
+
+#################################################################################
+# OneupUploaderBundle #
+#################################################################################
+
+oneup_uploader:
+    resource: .
+    type: uploader
+
+#################################################################################
+# LiipImagineBundle #
+#################################################################################
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+#################################################################################
+# FOSUser #
+#################################################################################
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+#fos_user_profile:
+    #resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    #prefix: /profile
+
+#fos_user_register:
+    #resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    #prefix: /register
+
+#fos_user_resetting:
+    #resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    #prefix: /resetting
+
+#fos_user_change_password:
+    #resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    #prefix: /profile
+
+#################################################################################
+# PrestaSitemapBundle #
+#################################################################################
+
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /

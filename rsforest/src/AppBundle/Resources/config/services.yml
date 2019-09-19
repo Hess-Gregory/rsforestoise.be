@@ -1,0 +1,15 @@
+services:
+    app.upload_listener:
+        class: AppBundle\Services\UploadListener
+        arguments: [@doctrine]
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.pre_upload, method: preUpload }
+            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
+
+    sitemap.listener:
+        class: AppBundle\EventListener\SitemapListener
+        arguments:
+            - @router
+            - @doctrine.orm.default_entity_manager
+        tags:
+            - { name: "presta.sitemap.listener" }

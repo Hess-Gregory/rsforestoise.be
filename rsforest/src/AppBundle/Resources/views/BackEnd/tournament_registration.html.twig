@@ -1,0 +1,90 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+	
+	<div id="back_end_tournament_registration">
+
+		{% for message in app.session.flashbag.get('info') %}
+	    	<p class="alert alert-success text-center"><b>{{ message }}</b></p>
+	    {% endfor %}
+
+		<div class="card">
+	        <div class="card-header">Inscriptions</div>
+	        <div class="card-block">
+
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered table-striped table-hover" id="tablesorter">
+						<thead>
+							<tr>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom Responsable</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">N° de Matricule</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Rue</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">N°</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Code Postal</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Ville</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">E-mail</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Téléphone</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Equipes Participantes</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for tournamentRegistration in tournamentRegistrations %}
+								
+								<tr>
+									<td>{{ tournamentRegistration.name }}</td>
+									<td>{{ tournamentRegistration.inCharge }}</td>
+									<td>{{ tournamentRegistration.registrationNumber }}</td>
+									<td>{{ tournamentRegistration.street }}</td>
+									<td>{{ tournamentRegistration.numberStreet }}</td>
+									<td>{{ tournamentRegistration.postalCode }}</td>
+									<td>{{ tournamentRegistration.city }}</td>
+									<td>{{ tournamentRegistration.email }}</td>
+									<td>{{ tournamentRegistration.phone }}</td>
+									<td width="30%">
+										{% for tournamentRegistrationTeam in tournamentRegistration.tournamentRegistrationTeams %}
+											
+											{% if loop.length <= 1 %}
+
+												{% set comma = '' %}
+
+												{% else %}
+
+												{% set comma = ', ' %}
+
+											{% endif %}
+
+											{{ tournamentRegistrationTeam.name ~ comma }}
+
+										{% endfor %}
+									</td>
+								</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+    <div style="clear:both;"></div>
+
+
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript" src="/vendor/tablesorter/jquery.tablesorter-update.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+			$('#tablesorter').tablesorter({
+			});
+		});
+
+	</script>
+
+{% endblock %}

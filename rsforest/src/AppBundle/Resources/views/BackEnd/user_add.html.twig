@@ -1,0 +1,47 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+
+	<div id="back_end_user_add">
+
+		<div class="card">
+	        <div class="card-header">Ajouter un Utilisateur</div>
+	        <div class="card-block">
+
+				<form action="{{ path('back_end_user_add') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+							
+				    {{ form_start(form) }}
+
+			    	{{ form_errors(form) }}
+
+			    	{{ form_row(form.username) }}
+			    	{{ form_row(form.email) }}
+			    	{{ form_row(form.password) }}
+			
+				    <div style="clear:both;"></div>
+
+			        <div class="text-center">         
+			            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Ajouter</button>   
+			        </div>
+
+			        {{ form_end(form) }}
+				</form>
+			</div>
+		</div>	
+	</div>
+
+	<div style="clear:both;"></div>
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+
+		$(function(){
+			$('.has-error input:first').focus();
+		});
+
+	</script>
+
+{% endblock %}
