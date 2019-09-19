@@ -1,0 +1,19 @@
+{
+  "name": "rennaissance_forestoise",
+  "version": "1.0.0",
+  "description": "GItHub Rennaissance Forestoise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hess-Gregory/rsforestoise.be.git"
+  },
+  "author": "HESS Gregory",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hess-Gregory/rsforestoise.be/issues"
+  },
+  "homepage": "https://github.com/Hess-Gregory/rsforestoise.be#readme"
+}
