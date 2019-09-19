@@ -108,7 +108,7 @@ oneup_uploader:
             frontend: dropzone
             allowed_mimetypes: ["image/gif", "image/jpeg", "image/jpg", "image/png"]
             storage:
-                directory: %kernel.root_dir%/../web/media/uploads/
+                directory: %kernel.root_dir%/../public_html/media/uploads/
 
 # LiipImagineBundle
 liip_imagine:
