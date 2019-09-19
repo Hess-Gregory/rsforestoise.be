@@ -1,0 +1,75 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+
+	<div id="back_end_actuality_add">
+
+		<div class="card">
+	        <div class="card-header">Ajouter une Actualité</div>
+	        <div class="card-block">
+
+				<form action="{{ path('back_end_actuality_add') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+							
+				    {{ form_start(form) }}
+
+			    	{{ form_errors(form) }}
+
+			    	{{ form_row(form.name) }}
+			    	{{ form_row(form.createdAt) }}
+			    	{{ form_row(form.content) }}
+			
+				    <div style="clear:both;"></div>
+
+			        <div class="text-center">         
+			            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Ajouter</button>   
+			        </div>
+
+			        {{ form_end(form) }}
+				</form>
+			</div>
+		</div>	
+	</div>
+
+	<div style="clear:both;"></div>
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+
+		$(function(){
+			$('.has-error input:first').focus();
+		});
+
+	</script>
+	
+	<script type="text/javascript" src="/vendor/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript">
+		tinymce.init({
+			selector: "textarea",
+			theme: "modern",
+	    	toolbar_items_size: 'small',
+	    	language : 'fr_FR',
+			relative_urls: false,
+			statusbar : false,
+			plugins: [
+				"autoresize advlist autolink lists link charmap print preview hr anchor pagebreak",
+				"searchreplace visualblocks visualchars code",
+				"nonbreaking save table contextmenu directionality",
+				"paste jbimages image media"
+			],
+			toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent link print | jbimages | forecolor backcolor image | media",
+		    style_formats: [
+		        //{title: 'Titre', block: 'h3'},
+		        //{title: 'Sous-Titre', block: 'h4'},
+		    ],
+			content_style: [
+			"html {overflow-y: scroll !important;}" +
+			".img-responsive {display: block;max-width: 100%;height: auto;}" +
+			".mce-object {border: none !important;}"
+			],
+
+		});
+	</script>
+{% endblock %}

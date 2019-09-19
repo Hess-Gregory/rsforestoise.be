@@ -1,0 +1,181 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = latestActuality.name %}
+{% set description = latestActuality.content|striptags|truncate(165, true)|raw %}
+{% set picture = '' %}                        
+
+{% for actuality in actualities %}
+
+    {% if latestActuality.name != actuality.name %}
+        
+        {% if latestActuality.picture is not null %}
+
+            {% set picture = latestActuality.picture.name %}
+
+        {% endif %}
+        
+    {% endif %}
+
+{% endfor %}
+
+{% block SEO %}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ app.request.uri }}"/>
+    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/media/uploads/{{ picture }}"/>
+    <meta property="og:image:type" content="{% if latestActuality.picture is not null %}{{ latestActuality.picture.fileType }}{% endif %}"/>
+    <meta property="og:image:width" content="1200"/> <!-- force display image first time on FB Share -->
+    <meta property="og:image:height" content="630"/> <!-- force display image first time on FB Share -->
+    <meta property="og:site_name" content="Renaissance Sportive Forestoise"/>
+    
+{% endblock SEO %}
+
+{% block section %}
+    
+    <div id="front_end_actuality_default">
+
+        <div class="actuality">
+
+            <div class="container">
+
+                <div class="row">
+
+    	            <div class="col-xs-12 col-md-8 actuality-left">
+    	                
+                        <h1>{{ latestActuality.name }}</h1>	
+                        
+                        <article>       
+
+                            <div class="actuality-left-date">{{ latestActuality.createdAt|date("d/m/Y") }}</div>
+                            
+                            <div class="actuality-left-content">
+
+                                <p>{{ latestActuality.content|raw }}</p>
+                            </div>
+
+                        </article>
+
+    	            </div>
+                    
+    	            <div class="col-xs-12 col-md-4 actuality-right">
+
+                        <form id="form_recherche" action="" method="post">
+
+                            <div class="input-group">
+                                <input id="search_value" type="text" class="form-control" placeholder="Mots-clefs" required>
+                                <span class="input-group-btn">
+                                    <button id="search_submit" class="btn" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                           
+                        </form>
+                        
+                        <div id="actuality_loading" class="actuality-right-loading text-center" style="display:none;">
+                            <img src="/img/loading.gif" height="32" width="32">
+                        </div>
+                        
+                        <div id="actuality_search_result_message">
+                            
+                        </div>
+
+                        <div id="actuality_search_result" class="actuality-right-result-search">
+
+                        </div>
+                        
+                        {% for actuality in actualities %}
+
+                            {% if latestActuality.name != actuality.name %}
+
+                                <a href="{{ path('front_end_actuality_default', {'slug': actuality.slug}) }}">
+
+                                    <article>
+                                
+                                        <div class="actuality-right-date">{{ actuality.createdAt|date("d/m/Y") }}</div>
+
+                                        <h2>{{ actuality.name }}</h2>
+
+                                        {% if actuality.picture is not null %}
+                                            <p><img src="{{ ('media/uploads/' ~ actuality.picture.name) | imagine_filter('front_end_actuality_default') }}" alt="RSForestoise-{{ actuality.name }}" class="img-responsive"></p>
+                                        {% else %}
+                                            <p><img src="http://placehold.it/1200x630/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
+                                        {% endif %}
+
+                                        <div class="actuality-right-content">
+                                            <p>{{ actuality.content|striptags|truncate(100, true)|raw }}</p>
+                                        </div>
+                                        
+                                    </article> 
+
+                                </a>
+
+                            {% endif %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#actuality_loading").hide();
+
+            $("#form_recherche").submit(function() { 
+
+                $("#actuality_loading").show();
+                $('#actuality_search_result_message').html('');
+                $('#actuality_search_result').html('');
+
+                var keyword = $("#search_value").val();
+                var data = 'keyword=' + keyword;
+                var i = 1;
+                var plural = '';
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('front_end_actuality_search')}}",
+                    data: data,
+                    cache: false,
+                }).done(function(data) {
+
+                    $.each(data, function(index, element) {
+
+                        if (element.name === '') {
+
+                            $('#actuality_search_result_message').html('<div class="actuality-right-result-search-danger">Aucun Résultat</div>');
+                        }
+                        else {
+
+                            if (i > 1) {
+                                plural = 's';
+                            };
+
+                            $('#actuality_search_result_message').html('<div class="actuality-right-result-search-success">'+i+' Actualité'+plural+' trouvée'+plural+'</div>');
+                        }
+
+                        $('#actuality_search_result').append('<a href="'+element.slug+'"><h2>'+element.name.toLowerCase().replace(keyword.toLowerCase(), '<span>'+keyword+'</span>')+'</h2></a>');
+
+                        i++;
+                    });
+
+                    $("#actuality_loading").hide();
+
+                });
+
+                return false;
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+    </script>
+
+{% endblock section %}

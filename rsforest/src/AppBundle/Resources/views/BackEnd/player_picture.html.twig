@@ -1,0 +1,198 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block head %}
+	<link href="/vendor/dropzone/css/dropzone.css" rel="stylesheet" type="text/css" />
+	<link href="/vendor/dropzone/css/basic.css" rel="stylesheet" type="text/css" />
+{% endblock head %}
+
+{% block section %}
+
+	<div id="back_end_player_picture">
+
+	    <div id="info"></div>
+
+		<div class="card">
+	        <div class="card-header">Photos Actuellement Utilisées pour "{{ player.name|capitalize }}"</div>
+	        <div class="card-block">
+
+                <div class="card-columns">
+
+                    {% for picture in pictures %}
+
+	            		<div class="card" id="delete{{ picture.id }}">
+
+							<img src="/media/uploads/{{ picture.name }}" class="card-img-top img-responsive">
+
+	            			<div class="card-block">
+
+								<div class="row">
+	            					<div class="col-sm-6" id="{{ player.id }}">
+										<div class="select-picture btn btn-success btn-sm" id="{{ picture.id }}" title="Sélectionner cette photo">
+											<i class="fa fa-check"></i>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="delete-picture btn btn-danger btn-sm" id="{{ picture.id }}" title="Supprimer cette photo">
+											<i class="fa fa-times"></i>
+										</div>
+									</div>
+								</div>
+	            			</div>
+	            		</div>
+
+                    {% endfor %}
+                    
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+	        <div class="card-header">Ajouter des photos</div>
+	        <div class="card-block">
+
+	        	<div id="infoErrorUpload"></div>
+
+				<form action="{{ oneup_uploader_endpoint('pictures') }}" class="dropzone" id="dropzone">
+					<input type="hidden" name="playerId" value="{{ player.id }}" />
+				</form>
+
+			</div>
+		</div>	
+
+	</div>
+
+	<div style="clear:both;"></div>
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript" src="/vendor/dropzone/dropzone.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			/* Select picture */
+			$('.select-picture').click(function() {
+
+				var idPicture = $(this).attr('id');
+				var idPlayer = $(this).parent().attr('id');
+				var data = {
+					'idPicture': idPicture,
+					'idPlayer': idPlayer
+				};
+
+				$.ajax({
+
+					type: "GET",
+					url: "{{ path('back_end_player_picture_select') }}",
+					data: data,
+					cache: false,
+
+					success: function() {
+
+						$('#info').html('<div class="alert alert-success center-text">Votre photo a bien été sélectionnée.</div>');
+						$("#info").show().fadeOut(5000);
+					}
+				});
+			});
+
+			/* Delete picture */
+			$('.delete-picture').click(function() {
+
+				if (confirm("Etes-vous sûr de vouloir supprimer cette photo ?")) {
+
+					var id = $(this).attr('id');
+					var data = 'id=' + id ;
+
+					$.ajax({
+
+						type: "GET",
+						url: "{{ path('back_end_player_picture_delete') }}",
+						data: data,
+						cache: false,
+
+						success: function() {
+
+							location.reload();
+						}
+					});
+				}
+			});
+
+			var message = '';
+			var minImageWidth = 495;
+			var maxImageWidth = 9999;
+    		var minImageHeight = 371;
+    		var maxImageHeight = 9999;
+
+			// DropZone
+			Dropzone.autoDiscover = false;
+		    $('.dropzone').dropzone({
+		        uploadMultiple: true,
+		        parallelUploads: 100,
+		        maxFiles: 100,
+		        maxThumbnailFilesize: 100,
+		        maxFilesize: 64,
+		        acceptedFiles: 'image/*',
+		        dictInvalidFileType: 'Ce type de fichier n\'est pas accepté.',
+		        dictFileTooBig: 'Ce fichier est trop gros, vous devez réduire sa taille pour pouvoir le mettre sur le site. (64MB Maximum)',
+				init: function () 
+				{	
+					this.on("successmultiple", function (file) 
+					{	
+						/* Reload page after upload success */
+						if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) 
+						{
+							location.reload();
+						}
+					});
+					this.on("errormultiple", function(files, response) {
+		                // Gets triggered when there was an error sending the files.
+		                // Maybe show form again, and notify user of error
+		                $('#infoErrorUpload').html('<p class="alert alert-danger text-center"><b>'+response+'</b></p>');
+		            });
+		            // Register for the thumbnail callback.
+				    // When the thumbnail is created the image dimensions are set.
+				    this.on("thumbnail", function(file) {
+				     	// Do the dimension checks you want to do
+
+				     	if (file.width > maxImageWidth) {
+				     		message = '- La largeur de l\'image doit être plus petite ('+maxImageWidth+'px maximum)';
+				     	}
+				     	if (file.width < minImageWidth) {
+				     		message += ' - La largeur de l\'image doit être plus grande ('+minImageWidth+'px minimum)';
+				     	}
+				     	if (file.height > maxImageHeight) {
+				     		message += ' - La hauteur de l\'image doit être plus petite ('+maxImageHeight+'px maximum)';
+				     	}
+				     	if (file.height < minImageHeight) {
+				     		message += ' - La hauteur de l\'image doit être plus grande ('+minImageHeight+'px minimum)';
+				     	}
+
+				      	if (file.width > maxImageWidth || file.width < minImageWidth || file.height > maxImageHeight || file.height < minImageHeight) {
+				        	file.rejectDimensions();
+				        	message = '';
+				      	}
+				      	else {
+				        	file.acceptDimensions();
+				      	}
+				    });
+				},
+
+			  	// Instead of directly accepting / rejecting the file, setup two
+			  	// functions on the file that can be called later to accept / reject
+			  	// the file.
+			  	accept: function(file, done) {
+			    	file.acceptDimensions = done;
+			    	file.rejectDimensions = function() { done(message); };
+			    	// Of course you could also just put the `done` function in the file
+			    	// and call it either with or without error in the `thumbnail` event
+			    	// callback, but I think that this is cleaner.
+			  	}
+		    });
+
+		});  
+	</script>
+
+{% endblock %}

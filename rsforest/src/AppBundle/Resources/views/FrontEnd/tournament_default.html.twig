@@ -1,0 +1,114 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = page.seo.title %}
+{% set description = page.seo.description %}
+
+{% block section %}
+
+    <div id="front_end_tournament_default">
+        
+        <div class="container">
+
+            <h1>Tournois</h1>
+
+            {% for message in app.session.flashbag.get('info') %}
+                <p class="alert alert-success text-center"><b>{{ message }}</b></p>
+            {% endfor %}
+
+            <p class="alert alert-info text-center"><b>Pour toute information supplémentaire : <span style="color:#000;">tournament@rsforestoise.be</span></b></p>
+
+            <div class="row">
+
+                {% for tournament in tournaments %}
+                    
+                    <div class="col-xs-12 col-md-6">
+                    
+                        <div class="date">
+                            {{ tournament.date|date("d/m/Y") }}
+                        </div>
+                
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Equipes</th>
+                                        <th>Heures</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    {% for tournamentpool in tournament.tournamentpools %}
+                                        
+                                        <tr>
+                                            <td>{{ tournamentpool.team }}</td>
+                                            <td>{{ tournamentpool.time }}</td>
+                                       </tr>
+
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+
+	        {% for message in app.session.flashbag.get('info') %}
+                <p class="alert alert-success text-center"><b>{{ message }}</b></p>
+            {% endfor %}
+
+            <form action="{{ path('front_end_tournament_default') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+                    
+                {{ form_start(form) }}
+
+                {{ form_errors(form) }}
+                
+                <div class="row">
+
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.inCharge) }}
+                    {{ form_row(form.registrationNumber) }}
+                    {{ form_row(form.street) }}
+                    {{ form_row(form.numberStreet) }}
+                    {{ form_row(form.postalCode) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.tournamentRegistrationTeams) }}
+                    {{ form_row(form.condition) }}
+
+                </div>
+                
+                <div class="displayCondition">
+                    <p>
+                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            * : Afficher les conditions générales
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-block">
+
+                            {% for text in page.texts if text.number == '1' %}
+                                {{ text.content|raw }}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" style="clear:both;">         
+                    <button type="submit" class="btn btn-secondary">Envoyer</button>   
+                </div>
+
+                {{ form_end(form) }}
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock section %}

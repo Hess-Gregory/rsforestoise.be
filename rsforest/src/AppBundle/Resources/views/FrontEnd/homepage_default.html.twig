@@ -1,0 +1,131 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = page.seo.title %}
+{% set description = page.seo.description %}
+
+{% block section %}
+    
+    <div id="front_end_homepage_default">
+   	
+		<div class="header">
+	
+	   		<div class="container">
+
+	   			<div class="row"> 
+
+					<div class="col-xs-12">
+						 
+						<div class="header-title-wrapper">
+							
+							<img src="/img/renaissance-sportive-forestoise-logo.png" alt="RSForestoise-club-de-football" class="hidden-lg-up">
+							
+							<div class="header-title-wrapper-1 wow fadeInLeftLite" data-wow-delay="0.1s">
+								<h1><span>R</span>enaissance</h1> 
+							</div>
+							 
+							<div class="header-title-wrapper-2 wow fadeInLeftLite" data-wow-delay="0.3s">
+								<h1><span>S</span>portive</h1>
+							</div>
+							
+							<div class="header-title-wrapper-3 wow fadeInLeftLite" data-wow-delay="0.5s">
+								<h1><span>F</span>orestoise</h1>
+							</div>
+							
+						</div>
+
+						<div class="header-title-description wow fadeInUp" data-wow-delay="1s">
+							<h1>Club de Football de Forest</h1>
+						</div>	
+					</div>
+				</div>
+	   		</div>			
+		</div>
+	
+		<div class="information">
+			
+			<div class="container">
+				
+				<div class="row">
+
+					<div class="col-xs-12">
+
+						{% for text in page.texts if text.number == '1' %}
+                            {{ text.content|raw }}
+                        {% endfor %}
+						
+						<div class="row">
+							<div class="col-sm-offset-3 col-sm-6">
+								<img src="/img/renaissance-sportive-forestoise-affiche_tournoi.jpg" class="img-responsive wow rollIn" data-wow-delay="0.5s">
+							</div>
+						</div>
+                        
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="presentation">
+			
+			<div class="container">
+
+				<div class="row presentation-wrapper">
+					
+					<div class="col-xs-12 col-md-4 presentation-wrapper-image">
+
+						<img src="/img/renaissance-sportive-forestoise-ball-orange.png" alt="RSForestoise-club-de-football" class="img-responsive wow rollIn" data-wow-delay="0.5s">
+						
+					</div>
+
+					<div class="col-xs-12 col-md-8 presentation-wrapper-text">
+						
+						<h1 class="wow fadeInLeftLite" data-wow-delay="1s">Bienvenue dans notre Club !</h1>
+
+						{% for text in page.texts if text.number == '2' %}
+                            {{ text.content|raw }}
+                        {% endfor %}
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		
+		<div class="sponsors">
+			
+			<div class="container">
+
+				<div class="row">
+					
+					<div class="col-xs-12 col-lg-6">
+						<a href="http://www.demindeveloppement.be/" target="_blank">
+							<div class="sponsors-wrapper wow bounceInLeft" data-wow-delay="0.1s">
+								<div>
+									<h1>Demin</h1>
+									<p>Développez votre activité, vos revenus et votre bien-être grâce à Eric Demin et au network marketing.</p>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div class="col-xs-12 col-lg-6">
+						<a href="http://city-facade.be/" target="_blank">
+							<div class="sponsors-wrapper wow bounceInRight" data-wow-delay="0.1s">
+								<div>
+									<h1>City Façade</h1>
+									<p>Plus de 30 années d'expérience ont permis de construire la réputation de notre entreprise familiale dans le secteur du nettoyage et de la rénovation de façades. </p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2521.6196829484165!2d4.3073652159327676!3d50.80115646991318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xded3ccafb7bd56d3!2sComplexe+Sportif+du+Bempt!5e0!3m2!1sfr!2sbe!4v1446049253698" width="1920" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+
+    </div>
+
+
+{% endblock section %}
+

@@ -2,20 +2,20 @@
 
 {% block section %}
 
-	<div id="back_end_tournament_pool_add">
+	<div id="back_end_team_add">
 
 		<div class="card">
-	        <div class="card-header">Ajouter un Groupe</div>
+	        <div class="card-header">Ajouter une Equipe</div>
 	        <div class="card-block">
 
-				<form action="{{ path('back_end_tournament_pool_add', {'tournamentId': tournament.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+				<form action="{{ path('back_end_team_add') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
 							
 				    {{ form_start(form) }}
 
 			    	{{ form_errors(form) }}
 
-			    	{{ form_row(form.team) }}
-			    	{{ form_row(form.time) }}
+			    	{{ form_row(form.name) }}
+			    	{{ form_row(form.type) }}
 			
 				    <div style="clear:both;"></div>
 

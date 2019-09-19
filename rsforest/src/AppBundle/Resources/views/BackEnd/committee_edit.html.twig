@@ -2,20 +2,23 @@
 
 {% block section %}
 
-	<div id="back_end_tournament_pool_edit">
+	<div id="back_end_committee_edit">
 
 		<div class="card">
-	        <div class="card-header">Modifier un Groupe</div>
+	        <div class="card-header">Modifier un membre du Comité du Club</div>
 	        <div class="card-block">
 
-				<form action="{{ path('back_end_tournament_pool_edit', {'tournamentId': tournament.id, 'tournamentPoolId': tournamentPool.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+				<form action="{{ path('back_end_committee_edit', {'committeeId': committee.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
 						
 				    {{ form_start(form) }}
 
 			    	{{ form_errors(form) }}
 
-			    	{{ form_row(form.team) }}
-			    	{{ form_row(form.time) }}
+			    	{{ form_row(form.name) }}
+			    	{{ form_row(form.firstName) }}
+			    	{{ form_row(form.phone) }}
+			    	{{ form_row(form.function) }}
+			    	{{ form_row(form.order) }}
 				
 				    <div style="clear:both;"></div>
 

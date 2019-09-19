@@ -1,0 +1,83 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+	
+	<div id="back_end_registration_default">
+
+		{% for message in app.session.flashbag.get('info') %}
+	    	<p class="alert alert-success text-center"><b>{{ message }}</b></p>
+	    {% endfor %}
+
+		<div class="card">
+	        <div class="card-header">Inscriptions</div>
+	        <div class="card-block">
+
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered table-striped table-hover" id="tablesorter">
+						<thead>
+							<tr>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Prénom</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Date de Naissance</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Lieu de Naissance</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Rue</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">N°</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Boîte</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Code Postal</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Ville</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Email</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Tél</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+							{% for registration in registrations %}
+
+								<tr>
+									<td>{{ registration.name|capitalize }}</td>
+									<td>{{ registration.firstName|capitalize }}</td>
+									<td>{{ registration.dateBirth|date("d/m/Y") }}</td>
+									<td>{{ registration.birthplace|capitalize }}</td>
+									<td>{{ registration.street|capitalize }}</td>
+									<td>{{ registration.numberStreet|capitalize }}</td>
+									<td>{{ registration.mailbox|capitalize }}</td>
+									<td>{{ registration.postalCode }}</td>
+									<td>{{ registration.city|capitalize }}</td>
+									<td>{{ registration.email }}</td>
+									<td>{{ registration.phone }}</td>
+									<td>
+										<a href="{{ path('back_end_registration_edit', {'registrationId': registration.id}) }}">
+											<div class="btn btn-warning btn-sm" title="Modifier"><i class="fa fa-pencil"></i></div>
+										</a>
+									</td>
+								</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+    <div style="clear:both;"></div>
+
+
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript" src="/vendor/tablesorter/jquery.tablesorter-update.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+			$('#tablesorter').tablesorter({
+			});
+		});
+
+	</script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = page.seo.title %}
+{% set description = page.seo.description %}
+
+{% block section %}
+
+    <div id="front_end_registration_default">
+        
+        <div class="container">
+
+            <h1>Inscription</h1>
+			
+	        {% for message in app.session.flashbag.get('info') %}
+                <p class="alert alert-success text-center"><b>{{ message }}</b></p>
+            {% endfor %}
+
+            <p class="alert alert-danger text-center"><b>Veuillez avant toute réelle inscription prendre contact avec le club pour effectuer un test d'entrée</b></p>
+
+            <form action="{{ path('front_end_registration_default') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+                    
+                {{ form_start(form) }}
+
+                {{ form_errors(form) }}
+                
+                <div class="row">
+
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.dateBirth) }}
+                    {{ form_row(form.birthplace) }}
+                    {{ form_row(form.street) }}
+                    {{ form_row(form.numberStreet) }}
+                    {{ form_row(form.mailbox) }}
+                    {{ form_row(form.postalCode) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.responsiblePhone) }}
+                    
+                </div>
+
+                <div class="text-center" style="clear:both;">         
+                    <button type="submit" class="btn btn-secondary">Envoyer</button>   
+                </div>
+
+                {{ form_end(form) }}
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock section %}

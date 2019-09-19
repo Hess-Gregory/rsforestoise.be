@@ -2,21 +2,21 @@
 
 {% block section %}
 
-	<div id="back_end_tournament_pool_edit">
+	<div id="back_end_seo_edit">
 
 		<div class="card">
-	        <div class="card-header">Modifier un Groupe</div>
+	        <div class="card-header">Modifier Référencement</div>
 	        <div class="card-block">
 
-				<form action="{{ path('back_end_tournament_pool_edit', {'tournamentId': tournament.id, 'tournamentPoolId': tournamentPool.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+				<form action="{{ path('back_end_seo_edit', {'seoId': seo.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
 						
 				    {{ form_start(form) }}
 
 			    	{{ form_errors(form) }}
 
-			    	{{ form_row(form.team) }}
-			    	{{ form_row(form.time) }}
-				
+		    		{{ form_row(form.title) }}
+		    		{{ form_row(form.description) }}
+
 				    <div style="clear:both;"></div>
 
 			        <div class="text-center">         

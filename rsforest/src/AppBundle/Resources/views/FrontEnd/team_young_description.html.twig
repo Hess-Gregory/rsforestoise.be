@@ -1,0 +1,97 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = team.name ~ ' est l\'une des nombreuses équipes de notre Club RSForestoise' %}
+{% set description = 'Retouvez ici tous les joueurs de l\'équipe ' ~ team.name ~ ' de notre Club de Football RSForestoise' %}
+{% set picture = '' %}                        
+
+{% if team.picture is not null %}
+
+    {% set picture = team.picture.name %}
+
+{% endif %}
+
+{% block SEO %}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ app.request.uri }}"/>
+    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/media/uploads/{{ picture }}"/>
+    <meta property="og:image:type" content="{% if team.picture is not null %}{{ team.picture.fileType }}{% endif %}"/>
+    <meta property="og:image:width" content="1200"/> <!-- force display image first time on FB Share -->
+    <meta property="og:image:height" content="630"/> <!-- force display image first time on FB Share -->
+    <meta property="og:site_name" content="Renaissance Sportive Forestoise"/>
+    
+{% endblock SEO %}
+
+{% block section %}
+
+    <div id="front_end_team_young_description">
+
+        <div class="container">
+
+            <h1>Equipe {{ team.name }}</h1>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for player in players %}
+
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ player.name|capitalize }}</td>
+                                <td>{{ player.firstName|capitalize }}</td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <div class="row clearfix staff">
+
+                {% for teamStaff in teamStaffs %}
+                    
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        
+                        <div class="card">
+
+                            <div class="card-block staff-function">
+                                <h4 class="card-title">{{ teamStaff.function|capitalize }}</h4>
+                            </div>
+
+                            {% if teamStaff.picture is not null %}
+                                <p><img src="{{ ('media/uploads/' ~ teamStaff.picture.name) | imagine_filter('front_end_team_first_description') }}" alt="RSForestoise-{{ teamStaff.name }}" class="img-responsive"></p>
+                            {% else %}
+                                <p><img src="http://placehold.it/495x371/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
+                            {% endif %}
+
+                            <div class="card-block staff-title">
+                                <h2 class="card-title">{{ teamStaff.name|capitalize }}</h2>
+                                <h3 class="card-subtitle text-muted">{{ teamStaff.firstname|capitalize }}</h3>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+
+                {% endfor %}
+            
+            </div>
+        </div>
+
+    </div>
+
+{% endblock section %}

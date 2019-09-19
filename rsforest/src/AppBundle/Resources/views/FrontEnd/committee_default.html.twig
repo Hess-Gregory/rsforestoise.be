@@ -1,0 +1,49 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = page.seo.title %}
+{% set description = page.seo.description %}
+
+{% block section %}
+
+    <div id="front_end_committee_default">
+        
+        <div class="container">
+
+            <h1>Comité du Club</h1>
+
+            <div class="row clearfix committee">
+
+                {% for committee in committees %}
+                    
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        
+                        <div class="card">
+              
+                            <div class="card-block committee-function">
+                                <h5 class="card-title">{{ committee.function|capitalize }}</h5>
+                            </div>
+
+                            {% if committee.picture is not null %}
+                                <p><img src="{{ ('media/uploads/' ~ committee.picture.name) | imagine_filter('front_end_committee_default') }}" alt="RSForestoise-{{ committee.name }}" class="img-responsive"></p>
+                            {% else %}
+                                <p><img src="http://placehold.it/495x371/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
+                            {% endif %}
+
+                            <div class="card-block committee-name">
+                                <h3 class="card-title">{{ committee.name|capitalize }}</h3>
+                                <h4 class="card-subtitle text-muted">{{ committee.firstName|capitalize }}</h4>
+                                <p>{{ committee.phone|capitalize }}</p>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock section %}

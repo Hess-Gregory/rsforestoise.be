@@ -1,0 +1,43 @@
+{% extends "AppBundle::front_end_base.html.twig" %}
+
+{% set title = page.seo.title %}
+{% set description = page.seo.description %}
+
+{% block section %}
+
+    <div id="front_end_team_first_default">
+        
+        <div class="container">
+
+            <h1>Equipes Première</h1>
+
+            <div class="row clearfix team">
+
+                {% for team in teams %}
+                    
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        
+                        <a href="{{ path('front_end_team_first_description', {'slug': team.slug}) }}">
+                            <div class="card">
+                                <div class="card-block team-title">
+                                    <h2 class="card-title">{{ team.name }}</h2>
+                                </div>
+
+                                {% if team.picture is not null %}
+                                    <p><img src="{{ ('media/uploads/' ~ team.picture.name) | imagine_filter('front_end_team_first_default') }}" alt="RSForestoise-{{ team.name }}" class="img-responsive"></p>
+                                {% else %}
+                                    <p><img src="http://placehold.it/495x371/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+            
+        </div>
+
+    </div>
+
+{% endblock section %}

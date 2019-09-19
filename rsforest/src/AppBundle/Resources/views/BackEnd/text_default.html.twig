@@ -1,0 +1,70 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+	
+	<div id="back_end_text_default">
+
+		{% for message in app.session.flashbag.get('info') %}
+	    	<p class="alert alert-success text-center"><b>{{ message }}</b></p>
+	    {% endfor %}
+
+		<div class="card">
+	        <div class="card-header">Textes</div>
+	        <div class="card-block">
+
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered table-striped table-hover table-sm" id="tablesorter">
+						<thead>
+							<tr>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom de la Page</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Numéro</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Contenu</th>
+								<th colspan="2">
+								</th>
+							</tr>
+						</thead>
+						<tbody>	
+							{% for page in pages %}
+								
+								{% for text in page.texts %}
+
+									<tr>
+										<td>{{ page.name }}</td>
+										<td>{{ text.number }}</td>			
+										<td>{{ text.content|striptags|truncate(150, true)|raw }}</td>			
+										<td>
+											<a href="{{ path('back_end_text_edit', {'textId': text.id}) }}">
+												<div class="btn btn-warning btn-sm" title="Modifier"><i class="fa fa-pencil"></i></div>
+											</a>
+										</td>
+									</tr>
+
+								{% endfor %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+    <div style="clear:both;"></div>
+
+
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript" src="/vendor/tablesorter/jquery.tablesorter-update.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+			$('#tablesorter').tablesorter({
+			});
+		});
+
+	</script>
+
+{% endblock %}

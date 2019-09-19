@@ -1,0 +1,48 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+
+	<div id="back_end_player_edit">
+
+		<div class="card">
+	        <div class="card-header">Modifier un Joueur</div>
+	        <div class="card-block">
+
+				<form action="{{ path('back_end_player_edit', {'playerId': player.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+						
+				    {{ form_start(form) }}
+
+			    	{{ form_errors(form) }}
+
+			    	{{ form_row(form.name) }}
+			    	{{ form_row(form.firstName) }}
+			    	{{ form_row(form.street) }}
+			    	{{ form_row(form.numberStreet) }}
+			    	{{ form_row(form.mailbox) }}
+			    	{{ form_row(form.postalCode) }}
+			    	{{ form_row(form.city) }}
+			    	{{ form_row(form.email) }}
+			    	{{ form_row(form.phone) }}
+			    	{{ form_row(form.responsiblePhone) }}
+			    	{{ form_row(form.dateArrival) }}
+			    	{{ form_row(form.from) }}
+			    	{{ form_row(form.variousInformation) }}
+			    	{{ form_row(form.team) }}
+				
+				    <div style="clear:both;"></div>
+
+			        <div class="text-center">         
+			            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Modifier</button>   
+			        </div>
+
+			        {{ form_end(form) }}
+				</form>
+			</div>
+		</div>	
+	</div>
+
+	<div style="clear:both;"></div>
+
+{% endblock section %}
+
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "AppBundle::back_end_base.html.twig" %}
+
+{% block section %}
+	
+	<div id="back_end_seo_default">
+
+		{% for message in app.session.flashbag.get('info') %}
+	    	<p class="alert alert-success text-center"><b>{{ message }}</b></p>
+	    {% endfor %}
+
+		<div class="card">
+	        <div class="card-header">Référencement</div>
+	        <div class="card-block">
+
+				<div class="table-responsive">
+					<table class="table table-striped table-hover table-bordered table-sm" id="tablesorter">
+						<thead>
+							<tr>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom de la Page</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Titre</th>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Description</th>
+								<th colspan="2">
+								</th>
+							</tr>
+						</thead>
+						<tbody>	
+							{% for page in pages %}
+								<tr>
+									<td>{{ page.name }}</td>
+									<td>{{ page.seo.title }}</td>
+									<td>{{ page.seo.description }}</td>
+									<td>
+										<div>
+											<a href="{{ path('back_end_seo_edit', {'seoId': page.seo.id}) }}">
+												<div class="btn btn-warning btn-sm" title="Modifier"><i class="fa fa-pencil"></i></div>
+											</a>
+										</div>
+									</td>
+								</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+    <div style="clear:both;"></div>
+
+{% endblock section %}
+
+{% block javascripts %}
+
+	<script type="text/javascript" src="/vendor/tablesorter/jquery.tablesorter-update.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+			$('#tablesorter').tablesorter({
+			});
+		});
+
+	</script>
+
+{% endblock %}
