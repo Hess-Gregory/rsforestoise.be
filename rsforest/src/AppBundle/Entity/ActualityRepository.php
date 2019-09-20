@@ -16,7 +16,7 @@ class ActualityRepository extends \Doctrine\ORM\EntityRepository
 
 		$qb->select('a')
 		   ->from('AppBundle:Actuality', 'a')
-		   ->orderBy('a.createdAt', 'DESC');
+		   ->orderBy('a.createdAt', 'DESC', 'LIMIT 10');
 
 		return $qb->getQuery()
 				  ->getResult();
