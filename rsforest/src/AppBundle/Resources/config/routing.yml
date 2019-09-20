@@ -279,6 +279,7 @@ back_end_registration_edit:
     requirements:
         registrationId: \d+
 
+
 # Committee
 
 back_end_committee_default:
