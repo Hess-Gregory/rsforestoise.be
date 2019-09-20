@@ -1,4 +1,4 @@
-/web/bundles/
+/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -9,10 +9,10 @@
 /vendor/
 /bin/
 /composer.phar
-/web/grunt/*
-/web/img/*
-/web/media/*
-/web/node_modules/*
-/web/dist/*
-/web/vendor/*
-/web/.sass-cache/*
+/public_html/grunt/*
+/public_html/img/*
+/public_html/media/*
+/public_html/node_modules/*
+/public_html/dist/*
+/public_html/vendor/*
+/public_html/.sass-cache/*
