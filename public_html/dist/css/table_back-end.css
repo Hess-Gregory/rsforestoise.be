@@ -1,0 +1,61 @@
+table { 
+  width: 100%!important;  
+  border-collapse: collapse!important; 
+}
+/* Zebra striping */
+tr:nth-of-type(2n+1) { 
+  background:  rgba(81, 145, 84, 0.5)  !important; 
+}
+tr:nth-of-type(2n+1):hover { 
+  background:  rgba(76, 175, 80, 0.5)   !important; 
+}
+tr:hover { 
+  background: rgba(235, 98, 17, 0.5)  !important; 
+}
+
+tr {
+    background: rgba(189, 90, 32, 0.5)  !important; 
+}
+th { 
+  background: #333!important; 
+  color: white!important; 
+  font-weight: bold!important; 
+}
+td, th { 
+  padding: 6px!important; 
+  border: 1px solid #ccc!important; 
+  text-align: left!important; 
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1277px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block!important; 
+	}
+	
+	/* Hide table headers (but not display: none!important;, for accessibility) */
+	thead tr { 
+		position: absolute!important;
+		top: -9999px!important;
+		left: -9999px!important;
+	}
+	
+	tr { border: 1px solid #ccc!important; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none!important;
+		border-bottom: 1px solid #eee!important; 
+		position: relative!important;
+		padding-left: 50%!important; 
+	}
+    
+
+	
+}
+tr > td:last-of-type {
+   display: flex;
+}
