@@ -88,7 +88,7 @@ class RegistrationController extends Controller
 
                     ->setSubject('Inscription au Club RSForestoise')
 
-                    ->setFrom($this->container->getParameter('mailer_address_from'))
+                    ->setFrom('noreply@rsforestoise.be')
 
                     ->setTo($data->getEmail())
 
@@ -134,9 +134,9 @@ class RegistrationController extends Controller
 
                     ->setSubject('Nouvelle inscription au Club RSForestoise')
 
-                    ->setFrom($this->container->getParameter('mailer_address_from'))
+                    ->setFrom('noreply@rsforestoise.be')
 
-                    ->setTo($this->container->getParameter('mailer_address_to'))
+                    ->setTo('info@rsforestoise.be')
 
                     ->setContentType('text/html')
 
