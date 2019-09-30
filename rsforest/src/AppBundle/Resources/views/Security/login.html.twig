@@ -7,9 +7,14 @@
 
         <title>Indentification</title>
     
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-GHW2S7IZAQe8+YkyL99LyDj1zdWXSPOG+JZafCtKiSc= sha512-vxM32w6T7zJ83xOQ6FT4CEFnlasqmkcB0+ojgbI0N6ZtSxYvHmT7sX2icN07TqEqr5wdKwoLkmB8sAsGAjCJHg==" crossorigin="anonymous">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
-        <link href="/dist/css/main_back-end{% if app.environment != 'dev' %}.min{% endif %}.css" rel="stylesheet" type="text/css" />
+     <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="/dist/css/login.css" rel="stylesheet" type="text/css" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -29,60 +34,75 @@
             <div id="front_end_login_default">
             
                 <div class="container">
-                    <div class="row">
-                        <div class="wrapper col-xs-12 col-sm-6 col-md-4 col-lg-3" style="position:absolute;">
+<div class="justify-content-center text-center pt-5">
+    <h1>Panneau Administration</h1>
+ </div>               	
+ 
+ <div class="d-flex justify-content-center h-50">
+		<div class="card">
+			<div class="card-header">
+				<h3>Identification</h3>
+                	<div class="d-flex justify-content-end social_icon">
+					    <span><img class="logo" src="/img/renaissance-sportive-forestoise-logo.png"></span>
+				    </div>
+			</div>
+			<div class="card-body">
+                {% if error %}
+                    <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+				<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" role="form" style="margin:0;">
 
-                            <div class="card">
-                                <div class="card-header">Identification</div>
-                                <div class="card-block clearfix">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                                    <div class="col-xs-12">
-                                        {% if error %}
-                                            <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                                        {% endif %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control"  id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Votre Username"/>
+						
+					</div>
 
-                                        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" role="form" style="margin:0;">
-                                            <div class="row">
-                                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                                        
-                                                <div>
-                                                    <label for="username" class="control-label">{{ 'security.login.username'|trans }}</label>
-                                                </div>
-                                                <div>
-                                                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Votre Username"/>
-                                                </div>
-                                          
-                                                <div>
-                                                    <label for="password" class="control-label">{{ 'security.login.password'|trans }}</label>
-                                                </div>
-                                                <div>
-                                                    <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Votre Password"/>
-                                                </div>
-                                      
-                                                <div>
-                                                    <label for="remember_me" class="control-label">{{ 'security.login.remember_me'|trans }}&nbsp;:</label>   
-                                                </div>
-                                                <div>
-                                                     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                                                </div>
 
-                                                <div class="col-lg-12 text-center" style="clear:both;padding-top:30px">
-                                                    <input type="submit" class="btn btn-secondary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Votre Password"/>
+					</div>
+
+
+					<div class="row align-items-center remember">
+						<input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans }}&nbsp;
+					</div>
+
+
+					<div class="form-group">
+						<input type="submit" class="btn float-right login_btn" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+					</div>
+
+
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					<a href="{{ path('front_end_homepage_default') }}">revenir sur le site</a>
+				</div>
+				<!--<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div> -->
+			</div>
+		</div>
+	</div>
+                 
             </div>
             <div style="clear:both;"></div>
         </section>
     </body>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/dist/js/main{% if app.environment != 'dev' %}.min{% endif %}.js"></script>
 
     <script type="text/javascript">
 
