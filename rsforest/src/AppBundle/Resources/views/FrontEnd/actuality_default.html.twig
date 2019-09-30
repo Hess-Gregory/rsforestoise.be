@@ -25,7 +25,7 @@
     <meta property="og:description" content="{{ description }}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{ app.request.uri }}"/>
-    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/media/uploads/{{ picture }}"/>
+    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/../../../../media/uploads/{{ picture }}"/>
     <meta property="og:image:type" content="{% if latestActuality.picture is not null %}{{ latestActuality.picture.fileType }}{% endif %}"/>
     <meta property="og:image:width" content="1200"/> <!-- force display image first time on FB Share -->
     <meta property="og:image:height" content="630"/> <!-- force display image first time on FB Share -->
@@ -98,7 +98,7 @@
                                         <h2>{{ actuality.name }}</h2>
 
                                         {% if actuality.picture is not null %}
-                                            <p><img src="{{ ('media/uploads/' ~ actuality.picture.name) | imagine_filter('front_end_actuality_default') }}" alt="RSForestoise-{{ actuality.name }}" class="img-responsive"></p>
+                                            <p><img src="{{ ('../../../../media/uploads/' ~ actuality.picture.name) | imagine_filter('front_end_actuality_default') }}" alt="RSForestoise-{{ actuality.name }}" class="img-responsive"></p>
                                         {% else %}
                                             <p><img src="http://placehold.it/1200x630/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
                                         {% endif %}

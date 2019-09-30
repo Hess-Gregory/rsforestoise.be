@@ -24,7 +24,7 @@
                                 </div>
 
                                 {% if team.picture is not null %}
-                                    <p><img src="{{ ('media/uploads/' ~ team.picture.name) | imagine_filter('front_end_team_first_default') }}" alt="RSForestoise-{{ team.name }}" class="img-responsive"></p>
+                                    <p><img src="{{ ('../../../../media/uploads/' ~ team.picture.name) | imagine_filter('front_end_team_first_default') }}" alt="RSForestoise-{{ team.name }}" class="img-responsive"></p>
                                 {% else %}
                                     <p><img src="http://placehold.it/495x371/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
                                 {% endif %}

@@ -73,7 +73,7 @@
                             </div>
 
                             {% if teamStaff.picture is not null %}
-                                <p><img src="{{ ('media/uploads/' ~ teamStaff.picture.name) | imagine_filter('front_end_team_first_description') }}" alt="RSForestoise-{{ teamStaff.name }}" class="img-responsive"></p>
+                                <p><img src="{{ ('../../../../media/uploads/' ~ teamStaff.picture.name) | imagine_filter('front_end_team_first_description') }}" alt="RSForestoise-{{ teamStaff.name }}" class="img-responsive"></p>
                             {% else %}
                                 <p><img src="http://placehold.it/495x371/777777/DDDDDD/&text=Picture+Not+Available" class="img-responsive"></p>
                             {% endif %}
