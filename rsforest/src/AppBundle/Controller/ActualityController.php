@@ -458,7 +458,7 @@ class ActualityController extends Controller
 
 
 
-        $oldFile = __DIR__.'/../../../public_html/media/uploads/'.$picture->getName();
+        $oldFile = __DIR__.'/../../../../../media/uploads/'.$picture->getName();
 
 
 
