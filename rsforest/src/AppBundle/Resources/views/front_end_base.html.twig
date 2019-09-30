@@ -27,6 +27,8 @@
         {% endblock SEO %}
 
         <link href="/dist/css/main{% if app.environment != 'dev' %}.min{% endif %}.css" rel="stylesheet" type="text/css" />
+        <link href="/dist/css/background.css" rel="stylesheet" type="text/css" />
+ 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,9 +59,9 @@
                             &#9776;
                         </button>
 
-                        <div class="pull-right hidden-lg-up btn-social">
+                      <!--  <div class="pull-right hidden-lg-up btn-social">
                             <a href="https://www.facebook.com/people/Renaissance-Sportive-Forestoise/100007137077448" target="_blank"><i class="fa fa-facebook-official"></i></a>
-                        </div>
+                        </div>-->
                     
                             <div class="collapse navbar-toggleable-md" id="exCollapsingNavbar2">
                         
@@ -88,7 +90,13 @@
                                     <li class="nav-item {% if app.request.attributes.get('_route') == 'front_end_committee_default' %}active{% endif %}">
                                         <a class="nav-link" href="{{ path('front_end_committee_default') }}">Comité du Club</a>
                                     </li>
+                   {% if is_granted('ROLE_SUPER_ADMIN', 'ROLE_ADMIN') %}
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Interface Admin</a>
+                        </li>
+                        
+                    {% endif %}
                                     <!--<div class="pull-right hidden-md-down btn-social">
                                         <a href="https://www.facebook.com/people/Renaissance-Sportive-Forestoise/100007137077448" target="_blank"><i class="fa fa-facebook-official"></i></a>
                                     </div>-->
@@ -151,7 +159,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM= sha512-0z9zJIjxQaDVzlysxlaqkZ8L9jh8jZ2d54F3Dn36Y0a8C6eI/RFOME/tLCFJ42hfOxdclfa29lPSNCmX5ekxnw==" crossorigin="anonymous"></script>
-        <script src="/dist/js/main{% if app.environment != 'dev' %}.min{% endif %}.js"></script>
+
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563630a36946a313" async="async"></script>
 
         {% if app.environment == 'dev' %}
