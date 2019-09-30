@@ -1,7 +1,26 @@
 {% extends "AppBundle::back_end_base.html.twig" %}
 
 {% block section %}
-	
+		<style>
+		@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1277px)  {
+	td:before { 
+position: absolute;
+    top: 6px;
+    left: 24px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+	}	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Nom"; }
+	td:nth-of-type(2):before { content: "Email"; }
+}
+</style>	
 	<div id="back_end_user_default">
 
 		{% for message in app.session.flashbag.get('info') %}

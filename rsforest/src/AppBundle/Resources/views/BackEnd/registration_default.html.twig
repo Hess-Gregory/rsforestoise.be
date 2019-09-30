@@ -7,15 +7,46 @@
 		{% for message in app.session.flashbag.get('info') %}
 	    	<p class="alert alert-success text-center"><b>{{ message }}</b></p>
 	    {% endfor %}
+		<style>
+		@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1277px)  {
+	td:before { 
+position: absolute;
+    top: 6px;
+    left: 24px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+	}	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "Nom"; }
+	td:nth-of-type(3):before { content: "Prénom"; }
+	td:nth-of-type(4):before { content: "Date de Naissance"; }
+	td:nth-of-type(5):before { content: "Lieu de Naissance"; }
+	td:nth-of-type(6):before { content: "Rue"; }
+	td:nth-of-type(7):before { content: "N°"; }
+	td:nth-of-type(8):before { content: "Boite"; }
+	td:nth-of-type(9):before { content: "Code Postal"; }
+	td:nth-of-type(10):before { content: "Ville"; }
+	td:nth-of-type(11):before { content: "Email"; }
+	td:nth-of-type(12):before { content: "Tél"; }
+}
+</style>
 
 		<div class="card">
 	        <div class="card-header">Inscriptions</div>
 	        <div class="card-block">
 
-				<div class="table-responsive">
+				<div class="table-responsive" style="overflow-x:auto;">
 					<table class="table table-condensed table-bordered table-striped table-hover" id="tablesorter">
 						<thead>
 							<tr>
+								<th class="order-by-column" title="Inverser l'ordre de cette colonne">ID</th>
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Nom</th>
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Prénom</th>
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Date de Naissance</th>
@@ -27,7 +58,7 @@
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Ville</th>
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Email</th>
 								<th class="order-by-column" title="Inverser l'ordre de cette colonne">Tél</th>
-								<th></th><th></th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -35,6 +66,7 @@
 							{% for registration in registrations %}
 
 								<tr>
+									<td>{{ registration.id }}</td>
 									<td>{{ registration.name|capitalize }}</td>
 									<td>{{ registration.firstName|capitalize }}</td>
 									<td>{{ registration.dateBirth|date("d/m/Y") }}</td>
@@ -50,11 +82,9 @@
 										<a href="{{ path('back_end_registration_edit', {'registrationId': registration.id}) }}">
 											<div class="btn btn-warning btn-sm" title="Modifier"><i class="fa fa-pencil"></i></div>
 										</a>
-									</td>
-									<td>
 										<a href="{{ path('back_end_registration_delete', {'registrationId': registration.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cette inscription ?')">
 											<div class="btn btn-danger btn-sm" title="Supprimer"><i class="fa fa-trash-o"></i></div>
-										</a>
+										</a>										
 									</td>
 								</tr>
 
