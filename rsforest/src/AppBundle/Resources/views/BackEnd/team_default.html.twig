@@ -13,7 +13,10 @@ position: absolute;
     padding-right: 10px;
     white-space: nowrap;
     text-align: left;
-	}	
+	}
+	.pictureTd{
+		width=80%;
+	}		
 	/*
 	Label the data
 	*/
@@ -49,8 +52,8 @@ position: absolute;
 						<tbody>
 							{% for team in teams %}
 								<tr>
-									<td width="20%">
-										<div class="row">
+									<td class="pictureTd" width="20%">
+										<div class="row pictureRow">
 											{% if team.picture is not null %}
 												<img src="/media/uploads/{{ team.picture.name }}" alt="" class="img-responsive col-xs-12 set-padding"/>
 												<!-- add col-xs-12 to img-responsive to fix issue display on firefox .33333333333.-->

@@ -14,6 +14,10 @@ position: absolute;
     white-space: nowrap;
     text-align: left;
 	}	
+	.pictureTd{
+		width=80%;
+	}
+
 	/*
 	Label the data
 	*/
@@ -52,8 +56,8 @@ position: absolute;
 						<tbody>	
 							{% for actuality in actualities %}
 								<tr>
-									<td width="15%">
-										<div class="row">
+									<td class="pictureTd" width="20%">
+										<div class="row pictureRow">
 											{% if actuality.picture is not null %}
 												<img src="/media/uploads/{{ actuality.picture.name }}" alt="" class="img-responsive col-xs-12 set-padding"/>
 												<!-- add col-xs-12 to img-responsive to fix issue display on firefox .33333333333.-->
