@@ -1,6 +1,7 @@
 /bundles/
 /app/bootstrap.php.cache
 /app/cache/*
+/app/config/*
 /app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
@@ -16,3 +17,5 @@
 /public_html/dist/*
 /public_html/vendor/*
 /public_html/.sass-cache/*
+.gitignore
+/.history/*
