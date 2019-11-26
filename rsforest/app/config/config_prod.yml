@@ -27,8 +27,8 @@ monolog:
             level:              debug
         swift:
             type:               swift_mailer
-            from_email:         "%mailer_address_from%"
-            to_email:           gsweet1981@live.be
+            from_email:         "rsfodyat@world-218.ca.planethoster.net"
+            to_email:           thiry.math@gmail.com
             subject:            "Debug"
             level:              debug
         login:
